@@ -1,0 +1,14 @@
+.outlet{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+.child{
+    flex: 0 0 calc(100% - 220px);
+    margin: 30px 0;
+    /* background: white; */
+    border-radius: 5px;
+    box-shadow: inset 2px 2px  5px #e8e4e4;
+}

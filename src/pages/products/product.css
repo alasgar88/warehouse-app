@@ -1,0 +1,21 @@
+.category-container{
+    display: flex;
+    width: 100%;
+    background: white;
+    justify-content: flex-end;
+    padding: 30px;
+    gap: 0 15px;
+}
+
+.category-button{
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    background: blue;
+    color: white;
+    font-size: 12px;
+}
+
+.category-button:hover{
+    background: rgb(49, 49, 245);
+}

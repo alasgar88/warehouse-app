@@ -1,0 +1,39 @@
+.table-container{
+    padding: 30px 30px 20px 30px;
+}
+
+.create-user{
+    border: none;
+    background: rgb(117, 117, 238);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    padding: 5px 10px;
+}
+
+.button-container{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    gap: 10px 20px;
+
+}
+
+.delete-button{
+    background: transparent;
+    border: none;
+    color: grey;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.close-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px !important;
+    padding: 0 !important;
+}
+

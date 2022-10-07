@@ -1,0 +1,45 @@
+.section-center{
+    width: 95%;
+    max-width: 1170px;
+    margin: 0 auto;
+
+
+}
+.navbar-center{
+    background: white;
+    box-shadow: 2px 2px 2px 5px #e8e4e4;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%
+    
+}
+
+.main-container{
+    height:calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    height: 70px;
+    padding-left: 25px;
+}
+
+.logo-img{
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.landing-login{
+    border: none;
+    background: blue;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
