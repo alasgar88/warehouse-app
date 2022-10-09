@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "reactstrap";
-import { AiFillEdit } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { editUser } from "../../../../features/user/userSlice";
 import { useDispatch } from "react-redux";
+import { InfoModal } from "../../../../componenets";
 
 const TableUser = ({ data, setShowEditUser }) => {
   const dispatch = useDispatch();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [transactionId, setTransactionId] = useState(false);
   return (
     <div className='table-container'>
+      {/* <InfoModal
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        func={confirmUserTransaction}
+        data={transactionId}
+        text='Confirm to accept transaction'
+      /> */}
       <h3 className='table-title'>Users</h3>
       <Table hover>
         <thead>
@@ -17,6 +26,7 @@ const TableUser = ({ data, setShowEditUser }) => {
             <th>Email</th>
             <th>Phone Number</th>
             <th>Address</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -39,6 +49,23 @@ const TableUser = ({ data, setShowEditUser }) => {
                     }}
                   >
                     <RiLockPasswordLine />
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className='state-button'
+                    onClick={() => {
+                      setTransactionId(id);
+                      setModalOpen(true);
+                    }}
+                    //   disabled={veziyyeti === "Qebul edildi"}
+                    //   className={`state-button ${
+                    //     veziyyeti === "Qebul edildi" ? "accepted" : "pending"
+                    //   }`
+                    // }
+                  >
+                    Click
+                    {/* {veziyyeti === "Qebul edildi" ? "Accepted" : "Pending"} */}
                   </button>
                 </td>
               </tr>

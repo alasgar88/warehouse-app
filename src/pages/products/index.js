@@ -9,7 +9,9 @@ import TableProduct from "./components/TableProduct/TableProduct";
 import "./product.css";
 
 const WareHouses = () => {
-  const { productList, productDelete } = useSelector((store) => store.product);
+  const { productList, productDelete, productCreate } = useSelector(
+    (store) => store.product
+  );
   const [showCreateProduct, setShowCreateProduct] = useState(false);
   // const [modalOpen, setModalOpen] = useState(false);
   // const [deleteWarehouseId, setDeleteWarehouseId] = useState(null);
@@ -22,11 +24,11 @@ const WareHouses = () => {
   //   setModalOpen(true);
   // };
 
-  // close Product  after navigation
+  // close  create Product  after navigation
   useEffect(() => {
     setShowCreateProduct(false);
     dispatch(getProductList());
-  }, [productDelete]);
+  }, [productDelete, productCreate]);
 
   // show create product with button click
   const handleClick = () => {
@@ -53,7 +55,7 @@ const WareHouses = () => {
         </button>
       </div>
       {showCreateProduct ? (
-        <CreateProduct setShowCreateProduct={setShowCreateProduct} />
+        <CreateProduct />
       ) : (
         // <TableProduct data={warehouseList} func={deleteRow} />
         <TableProduct data={productList} />

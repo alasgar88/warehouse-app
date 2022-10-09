@@ -4,21 +4,33 @@ import "./sidebar.css";
 import { GrTransaction } from "react-icons/gr";
 import { FaWarehouse } from "react-icons/fa";
 
-export const menuData = [
+export const adminMenu = [
   {
     label: "Users",
     icon: <FaUserAlt />,
-    path: "/users",
+    path: "/",
+    id: 0,
   },
   {
     label: "Products",
     icon: <MdProductionQuantityLimits />,
-    path: "/",
+    path: "/products",
+    id: 1,
   },
   { label: "Transactions", icon: <GrTransaction />, path: "/transactions" },
   {
     label: "Warehouses",
     icon: <FaWarehouse />,
     path: "/warehouses",
+    id: 2,
+  },
+];
+
+export const userMenu = [
+  {
+    label: "Transactions",
+    icon: <GrTransaction />,
+    path: "/user/transactions",
+    id: 10,
   },
 ];

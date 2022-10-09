@@ -4,7 +4,8 @@ import Warehouses from "./warehouses";
 import SharedLayout from "./sharedLayout/SharedLayout";
 import LandingPage from "./landingPage/LandingPage";
 import ProtectedRoute from "./ProtectedRoute";
-import Users from "./users";
+import User from "./user";
+import UserTransaction from "./userTransaction";
 import AuthProtected from "./AuthProtected";
 
 export {
@@ -14,6 +15,7 @@ export {
   SharedLayout,
   LandingPage,
   ProtectedRoute,
-  Users,
+  User,
+  UserTransaction,
   AuthProtected,
 };

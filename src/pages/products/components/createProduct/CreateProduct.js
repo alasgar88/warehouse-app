@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./create-product.css";
-import { Form, FormGroup, Label, Input, Button, Row } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { toast } from "react-toastify";
 import { InfoModal } from "../../../../componenets";
 import { createProduct } from "../../../../features/product/productSlice";
@@ -21,6 +21,8 @@ const CreateWareHouse = () => {
     CategoryId: "",
   });
 
+  console.log(productData, "productData");
+
   const handleChange = (e) => {
     const value = e.target.value;
     let name = e.target.name;
@@ -35,6 +37,8 @@ const CreateWareHouse = () => {
         if (mainCategory.Name === Name) {
           return mainCategory.SubCat;
         }
+        // 1
+        return;
       });
       setSubCategoryList(
         subCategoryList[0] ? subCategoryList[0] : subCategoryList[1]
@@ -49,7 +53,6 @@ const CreateWareHouse = () => {
     });
   };
 
-  console.log(productData);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -73,7 +76,7 @@ const CreateWareHouse = () => {
   // get product category list
   useEffect(() => {
     dispatch(getProductCategoryList());
-  }, []);
+  }, [dispatch]);
 
   // create main category list
   useEffect(() => {
@@ -91,13 +94,25 @@ const CreateWareHouse = () => {
         if (mainCategory.Name === Name) {
           return mainCategory.SubCat;
         }
+        return;
       });
       setSubCategoryList(
         subCategoryList[0] ? subCategoryList[0] : subCategoryList[1]
       );
     }
     return;
-  }, [mainCategoryList]);
+  }, [mainCategoryList, productCategoryList]);
+
+  // set default values
+  useEffect(() => {
+    setProductData((oldData) => {
+      const newData = {
+        ...oldData,
+        CategoryId: productCategoryList[0]?.SubCat[0]?.Id,
+      };
+      return newData;
+    });
+  }, [productCategoryList]);
 
   return (
     <div className='create-user-container'>

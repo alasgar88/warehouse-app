@@ -13,6 +13,7 @@ const WareHouses = () => {
   const [showCreateWarehouse, setShowCreateWarehouse] = useState(false);
 
   const dispatch = useDispatch();
+
   // close Warehouse  after navigation
   useEffect(() => {
     setShowCreateWarehouse(false);

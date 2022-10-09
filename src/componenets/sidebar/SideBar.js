@@ -1,20 +1,30 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { menuData } from "./menuData";
+import { adminMenu, userMenu } from "./menuData";
 
 const SideBar = () => {
+  const { role } = useSelector((store) => store.user.user);
   return (
     <div className='sidebar'>
-      {menuData.map((menuItem, index) => {
-        return (
-          <div className='menu-item' key={index}>
-            <span className='icon'>{menuItem?.icon}</span>
-            <NavLink to={menuItem?.path} className='menu-link'>
-              {menuItem?.label}
-            </NavLink>
-          </div>
-        );
-      })}
+      {role === "Admin"
+        ? adminMenu.map((menuItem) => {
+            return <SideBarItem {...menuItem} key={menuItem.id} />;
+          })
+        : userMenu.map((menuItem) => {
+            return <SideBarItem {...menuItem} key={menuItem.id} />;
+          })}
+    </div>
+  );
+};
+
+const SideBarItem = ({ path, label, icon }) => {
+  return (
+    <div className='menu-item'>
+      <span className='icon'>{icon}</span>
+      <NavLink to={path} className='menu-link'>
+        {label}
+      </NavLink>
     </div>
   );
 };

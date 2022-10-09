@@ -22,7 +22,6 @@ const EditUser = () => {
     setUserData((oldValue) => {
       return { ...oldValue, [name]: value };
     });
-    console.log(userData, "useData");
   };
 
   const handleSubmit = (e) => {
@@ -49,7 +48,7 @@ const EditUser = () => {
         setModalOpen={setModalOpen}
         func={changePassword}
         data={userData}
-        text='Send instruction to email'
+        text='Confirm to change password'
       />
       <p className='create-user-heading'>Reset Password</p>
       <p

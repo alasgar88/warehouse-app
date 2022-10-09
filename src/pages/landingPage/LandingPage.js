@@ -29,7 +29,6 @@ const LandingPage = () => {
   };
 
   const handleChange = (e) => {
-    console.log(userValue);
     const value = e.target.value.toString();
     const name = e.target.name;
     setUserValue((oldValue) => {

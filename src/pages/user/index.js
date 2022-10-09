@@ -8,16 +8,17 @@ import EditUser from "./components/editUser/EditUser";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
 const Users = () => {
-  const { userList } = useSelector((store) => store.user);
+  const { userList, userCreate, userPasswordChanged } = useSelector(
+    (store) => store.user
+  );
   const [showCreateUser, setShowCreateUser] = useState(false);
   const [showEditUser, setShowEditUser] = useState(false);
-  const [refreshComponent, setRefreshComponent] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     setShowCreateUser(false);
     dispatch(getAllUsers());
-  }, []);
+  }, [userCreate, userPasswordChanged]);
 
   // show changePassword container
   // const showChangePassword = () => {
@@ -26,9 +27,9 @@ const Users = () => {
   // };
 
   // close CreateUser component
-  const handleClick = () => {
-    setShowCreateUser(!showCreateUser);
-  };
+  useEffect(() => {
+    setShowEditUser(false);
+  }, [userPasswordChanged]);
 
   // close CreateUser componenet after user Created
   useEffect(() => {

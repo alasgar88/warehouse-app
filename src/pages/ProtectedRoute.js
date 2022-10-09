@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useSelector((store) => store.user);
-  if (!user) {
+  const { role } = useSelector((store) => store.user.user);
+  if (!role) {
     return <Navigate to='/landing' />;
   }
   return children;

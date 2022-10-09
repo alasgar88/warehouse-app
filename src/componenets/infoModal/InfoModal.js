@@ -12,7 +12,6 @@ const InfoModal = ({ modalOpen, setModalOpen, func, data, text }) => {
   };
 
   const executeFunction = () => {
-    console.log(data, "data");
     dispatch(func(data));
     setModalOpen(false);
   };

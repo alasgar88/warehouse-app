@@ -21,6 +21,8 @@ const CreateUser = () => {
     address: "",
   });
 
+  console.log(userData, "userData");
+
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -47,10 +49,18 @@ const CreateUser = () => {
     setModalOpen(true);
   };
 
+  // set default form valyes
+  useEffect(() => {
+    setUserData((oldData) => {
+      const newData = { ...oldData, anbarId: warehouseList[0]?.id };
+      return newData;
+    });
+  }, [warehouseList]);
+
   // get warehouse list
   useEffect(() => {
     dispatch(getWarehouseList());
-  }, []);
+  }, [getWarehouseList]);
 
   return (
     <div className='create-user-container'>
@@ -112,7 +122,7 @@ const CreateUser = () => {
             {warehouseList &&
               warehouseList.map((warehouse) => {
                 return (
-                  <option key={warehouse.id} value={warehouse.id} selected>
+                  <option key={warehouse.id} value={warehouse.id}>
                     {warehouse.name}
                   </option>
                 );

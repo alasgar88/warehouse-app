@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   Products,
-  Users,
+  User,
   Transactions,
   Warehouses,
   SharedLayout,
   LandingPage,
   ProtectedRoute,
+  UserTransaction,
   AuthProtected,
 } from "./pages";
 import { ToastContainer } from "react-toastify";
@@ -24,21 +25,41 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index element={<Products />} />
           <Route
-            path='users'
+            index
             element={
               <AuthProtected>
-                <Users />
+                <User />
               </AuthProtected>
             }
           />
-          <Route path='transactions' element={<Transactions />} />
-          <Route path='warehouses' element={<Warehouses />} />
+          <Route
+            path='products'
+            element={
+              <AuthProtected>
+                <Products />
+              </AuthProtected>
+            }
+          />
+          <Route
+            path='transactions'
+            element={
+              <AuthProtected>
+                <Transactions />
+              </AuthProtected>
+            }
+          />
+          <Route
+            path='warehouses'
+            element={
+              <AuthProtected>
+                <Warehouses />
+              </AuthProtected>
+            }
+          />
+          <Route path='user/transactions' element={<UserTransaction />} />
         </Route>
-        <Route>
-          <Route path='landing' element={<LandingPage />} />
-        </Route>
+        <Route path='landing' element={<LandingPage />} />
       </Routes>
       <ToastContainer position='top-center' />
     </BrowserRouter>

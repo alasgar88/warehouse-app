@@ -9,9 +9,9 @@ import {
 
 const initialState = {
   productList: [],
-  product: "",
   isLoading: false,
   productDelete: false,
+  productCreate: false,
 };
 
 export const getProductList = createAsyncThunk(
@@ -48,8 +48,7 @@ const productSlice = createSlice({
     },
     [createProduct.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.productList = [...state.productList, action.payload];
-      state.product = action.payload;
+      state.productCreate = !state.productCreate;
       toast.success("Product created succcesfully");
     },
     [createProduct.rejected]: (state, action) => {

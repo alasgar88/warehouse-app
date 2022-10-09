@@ -11,14 +11,17 @@ import {
   createUserThunk,
   getUserListThunk,
   changeUserPasswordThunk,
+  deactiveOrActiveUserThunk,
 } from "../../api/userApi";
 
 const initialState = {
   user: getUserFromLocalStorage(),
   isLoading: false,
-  newUser: "",
   editUserEmail: "",
+  userCreate: false,
+  userStatus: false,
   userList: [],
+  userPasswordChanged: false,
 };
 
 export const loginUser = createAsyncThunk("user/loginUser", loginUserThunk);
@@ -36,6 +39,11 @@ export const getAllUsers = createAsyncThunk(
 export const changePassword = createAsyncThunk(
   "user/changePassword",
   changeUserPasswordThunk
+);
+
+export const deactiveOrActiveUser = createAsyncThunk(
+  "user/deactiveOrActiveUser",
+  deactiveOrActiveUserThunk
 );
 
 const userSlice = createSlice({
@@ -72,8 +80,7 @@ const userSlice = createSlice({
     },
     [createUser.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.newUser = action.payload;
-      state.userList = [...state.userList, action.payload];
+      state.userCreate = !state.userCreate;
       toast.success("User created succesfully");
     },
     [createUser.rejected]: (state, action) => {
@@ -90,15 +97,29 @@ const userSlice = createSlice({
     [getAllUsers.rejected]: (state, action) => {
       state.isLoading = false;
     },
-    // forget passowrd
+    // change password passowrd
     [changePassword.pending]: (state) => {
       state.isLoading = true;
     },
     [changePassword.fulfilled]: (state, action) => {
       state.isLoading = false;
+      state.userPasswordChanged = !state.userPasswordChanged;
+      toast.success("Password changed succesfully");
       // state.userList = action.payload;
     },
     [changePassword.rejected]: (state, action) => {
+      state.isLoading = false;
+    },
+    [deactiveOrActiveUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [deactiveOrActiveUser.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.userStatus = !state.userStatus;
+      toast.success("Status  changed succesfully");
+      // state.userList = action.payload;
+    },
+    [deactiveOrActiveUser.rejected]: (state, action) => {
       state.isLoading = false;
     },
   },

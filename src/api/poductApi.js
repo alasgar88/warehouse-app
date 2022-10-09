@@ -36,6 +36,8 @@ export const createProductThunk = async (product, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.response.request.response);
   }
 };
+
+// delete product
 export const deleteProductThunk = async (id, thunkAPI) => {
   try {
     const resp = await axios.delete(

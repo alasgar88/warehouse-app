@@ -30,6 +30,7 @@ export const createUserThunk = async (user, thunkAPI) => {
     );
     return resp.data;
   } catch (error) {
+    console.log(error.response.request.response);
     return thunkAPI.rejectWithValue(error.response.request.response);
   }
 };
@@ -52,10 +53,35 @@ export const getUserListThunk = async (_, thunkAPI) => {
   }
 };
 
+// change user password
 export const changeUserPasswordThunk = async (userData, thunkAPI) => {
   try {
     const resp = await axios.put(
-      `http://karfree-001-site1.atempurl.com/api/Admin/ChangeUserPassword?email=${userData.email}&newPassword=${userData.newPassword}&PasswordConfirmation=${userData.PasswordConfirmation}`,
+      // `http://karfree-001-site1.atempurl.com/api/Admin/ChangeUserPassword?email=${userData.email}&newPassword=${userData.newPassword}&PasswordConfirmation=${userData.PasswordConfirmation}`,
+      `http://karfree-001-site1.atempurl.com/api/Admin/ChangeUserPassword`,
+      {
+        email: userData.email,
+        newPassword: userData.newPassword,
+        passwordConfirmation: userData.PasswordConfirmation,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        },
+      }
+    );
+    return resp.data.data;
+  } catch (error) {
+    console.log(error, "error");
+    return thunkAPI.rejectWithValue(error.response.request.response);
+  }
+};
+
+// activate deaktivate user
+export const deactiveOrActiveUserThunk = async ({ id, status }, thunkAPI) => {
+  try {
+    const resp = await axios.put(
+      `http://karfree-001-site1.atempurl.com/api/Admin/DeactiveOrActiveUser/${id}?status=${status}`,
       {
         headers: {
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,

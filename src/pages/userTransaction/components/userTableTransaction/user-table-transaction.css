@@ -1,0 +1,17 @@
+.state-button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.accepted{
+background: green;
+}
+
+.pending{
+    background: red;
+    cursor: pointer;
+}
