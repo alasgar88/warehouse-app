@@ -9,7 +9,7 @@ import { Navbar } from "../../componenets";
 import { FormGroup, Label, Input, Button, Form } from "reactstrap";
 
 const LandingPage = () => {
-  const { user, isLoading } = useSelector((store) => store.user);
+  const { isLoading } = useSelector((store) => store.user);
   const [userValue, setUserValue] = useState({ Email: "", Password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ const LandingPage = () => {
               <FormGroup floating>
                 <Input
                   id='password'
-                  type='text'
+                  type='password'
                   name='Password'
                   value={userValue.Password}
                   onChange={handleChange}

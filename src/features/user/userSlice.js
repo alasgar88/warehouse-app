@@ -85,6 +85,7 @@ const userSlice = createSlice({
     },
     [createUser.rejected]: (state, action) => {
       state.isLoading = false;
+      toast.error(action.payload);
     },
     // get all users
     [getAllUsers.pending]: (state) => {

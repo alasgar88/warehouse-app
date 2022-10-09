@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import "./info-modal.css";
+import { MdOutlineNotificationImportant } from "react-icons/md";
 
 const InfoModal = ({ modalOpen, setModalOpen, func, data, text }) => {
   //   const { modalOpen } = useSelector((store) => store.infoModal);
@@ -19,8 +20,10 @@ const InfoModal = ({ modalOpen, setModalOpen, func, data, text }) => {
   return (
     <div className='info-modal-container'>
       <Modal isOpen={modalOpen} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
-        <ModalBody>{text}</ModalBody>
+        <ModalHeader toggle={toggle}>
+          <MdOutlineNotificationImportant />
+        </ModalHeader>
+        <ModalBody className='modalbody-text'>{text}</ModalBody>
         <ModalFooter>
           <Button color='primary' onClick={executeFunction}>
             Confirm

@@ -1,3 +1,8 @@
 .info-modal-container{
     width: 400px;
 }
+
+.modalbody-text{
+    font-size: 20px;
+    font-weight: bold;
+}

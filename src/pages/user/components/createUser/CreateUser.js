@@ -21,8 +21,6 @@ const CreateUser = () => {
     address: "",
   });
 
-  console.log(userData, "userData");
-
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
