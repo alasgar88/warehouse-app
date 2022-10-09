@@ -6,3 +6,11 @@
     font-weight: bold;
     font-size: 10px;
 }
+
+.deactivate{
+    background: rgb(248, 166, 166);
+}
+
+.activate{
+    background: rgb(154, 154, 246);
+}

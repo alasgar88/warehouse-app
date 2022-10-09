@@ -4,7 +4,6 @@ import { customFetch } from "./axios";
 export const loginUserThunk = async (user, thunkAPI) => {
   try {
     const resp = await customFetch.post("/Auth/Login", user);
-    console.log(resp.data, "role");
     return resp.data;
   } catch (error) {
     console.log(error, "error");

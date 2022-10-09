@@ -4,20 +4,27 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { editUser } from "../../../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { InfoModal } from "../../../../componenets";
+import { deactiveOrActiveUser } from "../../../../features/user/userSlice";
+import "./table-user.css";
 
 const TableUser = ({ data, setShowEditUser }) => {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
-  const [transactionId, setTransactionId] = useState(false);
+  const [userStatusData, setUserStatusData] = useState({
+    id: "",
+    status: false,
+  });
   return (
     <div className='table-container'>
-      {/* <InfoModal
+      <InfoModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
-        func={confirmUserTransaction}
-        data={transactionId}
-        text='Confirm to accept transaction'
-      /> */}
+        func={deactiveOrActiveUser}
+        data={userStatusData}
+        text={`Confirm to ${
+          userStatusData.status === false ? "deactivate" : "activate"
+        } user`}
+      />
       <h3 className='table-title'>Users</h3>
       <Table hover>
         <thead>
@@ -32,7 +39,7 @@ const TableUser = ({ data, setShowEditUser }) => {
         </thead>
         <tbody>
           {data?.map((user, index) => {
-            const { userName, email, phoneNumber, address, id } = user;
+            const { userName, email, phoneNumber, address, id, status } = user;
             return (
               <tr key={index}>
                 <th>{userName}</th>
@@ -53,19 +60,15 @@ const TableUser = ({ data, setShowEditUser }) => {
                 </td>
                 <td>
                   <button
-                    className='state-button'
+                    className={`state-button ${
+                      status ? "deactivate" : "activate"
+                    }`}
                     onClick={() => {
-                      setTransactionId(id);
+                      setUserStatusData({ id, status: !status });
                       setModalOpen(true);
                     }}
-                    //   disabled={veziyyeti === "Qebul edildi"}
-                    //   className={`state-button ${
-                    //     veziyyeti === "Qebul edildi" ? "accepted" : "pending"
-                    //   }`
-                    // }
                   >
-                    Click
-                    {/* {veziyyeti === "Qebul edildi" ? "Accepted" : "Pending"} */}
+                    {status ? "deactivate" : "activate"}
                   </button>
                 </td>
               </tr>

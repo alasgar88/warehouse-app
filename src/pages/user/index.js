@@ -8,7 +8,7 @@ import EditUser from "./components/editUser/EditUser";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
 const Users = () => {
-  const { userList, userCreate, userPasswordChanged } = useSelector(
+  const { userList, userCreate, userPasswordChanged, userStatus } = useSelector(
     (store) => store.user
   );
   const [showCreateUser, setShowCreateUser] = useState(false);
@@ -18,7 +18,7 @@ const Users = () => {
   useEffect(() => {
     setShowCreateUser(false);
     dispatch(getAllUsers());
-  }, [userCreate, userPasswordChanged]);
+  }, [userCreate, userPasswordChanged, userStatus]);
 
   // show changePassword container
   // const showChangePassword = () => {
