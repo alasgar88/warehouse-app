@@ -1,16 +1,9 @@
-import axios from "axios";
+import { customFetch } from "./axios";
 
 // get transaction list
 export const getTransactionListThunk = async (_, thunkAPI) => {
   try {
-    const resp = await axios(
-      "http://karfree-001-site1.atempurl.com/api/Transactions",
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
-    );
+    const resp = await customFetch("/Transactions");
     return resp.data;
   } catch (error) {
     console.log(error, "error");
@@ -21,14 +14,9 @@ export const getTransactionListThunk = async (_, thunkAPI) => {
 // create transaction
 export const createTransactionThunk = async (transaction, thunkAPI) => {
   try {
-    const resp = await axios.post(
-      "http://karfree-001-site1.atempurl.com/api/Transactions/PostTransaction",
-      transaction,
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
+    const resp = await customFetch.post(
+      "/Transactions/PostTransaction",
+      transaction
     );
     return resp.data.data;
   } catch (error) {

@@ -1,16 +1,13 @@
-import axios from "axios";
+import { customFetch } from "./axios";
 
 // get warehouse list
 export const getWarehouseListThunk = async (_, thunkAPI) => {
   try {
-    const resp = await axios(
-      "http://karfree-001-site1.atempurl.com/api/Warehouse",
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
-    );
+    const resp = await customFetch("/Warehouse", {
+      headers: {
+        authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+      },
+    });
     return resp.data.data;
   } catch (error) {
     console.log(error, "error");
@@ -21,15 +18,11 @@ export const getWarehouseListThunk = async (_, thunkAPI) => {
 // create warehouse  house
 export const createWarehouseThunk = async (warehouse, thunkAPI) => {
   try {
-    const resp = await axios.post(
-      "http://karfree-001-site1.atempurl.com/api/Warehouse",
-      warehouse,
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
-    );
+    const resp = await customFetch.post("/Warehouse", warehouse, {
+      headers: {
+        authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+      },
+    });
     return resp.data.data;
   } catch (error) {
     console.log(error, "error");
@@ -40,15 +33,12 @@ export const createWarehouseThunk = async (warehouse, thunkAPI) => {
 // delete warehouse  house
 export const deleteWarehouseThunk = async (id, thunkAPI) => {
   try {
-    const resp = await axios.delete(
-      `http://karfree-001-site1.atempurl.com/api/Warehouse/${id}`,
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-          // "Content-Type": "application/json",
-        },
-      }
-    );
+    const resp = await customFetch.delete(`/Warehouse/${id}`, {
+      headers: {
+        authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        // "Content-Type": "application/json",
+      },
+    });
     return resp.data;
   } catch (error) {
     console.log(error, "error");

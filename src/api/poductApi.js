@@ -1,16 +1,9 @@
-import axios from "axios";
+import { customFetch } from "./axios";
 
 // get product list
 export const getProductListThunk = async (_, thunkAPI) => {
   try {
-    const resp = await axios(
-      "http://karfree-001-site1.atempurl.com/api/Products/GetProducts",
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
-    );
+    const resp = await customFetch("/Products/GetProducts");
     return resp.data.data.products;
   } catch (error) {
     console.log(error, "error");
@@ -21,15 +14,7 @@ export const getProductListThunk = async (_, thunkAPI) => {
 // create product
 export const createProductThunk = async (product, thunkAPI) => {
   try {
-    const resp = await axios.post(
-      "http://karfree-001-site1.atempurl.com/api/Products/PostProduct",
-      product,
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
-    );
+    const resp = await customFetch.post("/Products/PostProduct", product);
     return resp.data.data;
   } catch (error) {
     console.log(error, "error");
@@ -40,14 +25,7 @@ export const createProductThunk = async (product, thunkAPI) => {
 // delete product
 export const deleteProductThunk = async (id, thunkAPI) => {
   try {
-    const resp = await axios.delete(
-      `http://karfree-001-site1.atempurl.com/api/Products/DeleteProduct/${id}`,
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
-    );
+    const resp = await customFetch.delete(`/Products/DeleteProduct/${id}`);
     return resp.data.data;
   } catch (error) {
     console.log(error, "error");

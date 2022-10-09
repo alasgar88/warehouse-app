@@ -1,16 +1,9 @@
-import axios from "axios";
+import { customFetch } from "./axios";
 
 // get user transaction list
 export const getUserTransactionListThunk = async (_, thunkAPI) => {
   try {
-    const resp = await axios(
-      "http://karfree-001-site1.atempurl.com/api/User/GetLastTransactions",
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
-    );
+    const resp = await customFetch("/User/GetLastTransactions");
     return resp.data;
   } catch (error) {
     console.log(error, "error");
@@ -21,14 +14,9 @@ export const getUserTransactionListThunk = async (_, thunkAPI) => {
 // create  user transaction
 export const createUserTransactionThunk = async (transaction, thunkAPI) => {
   try {
-    const resp = await axios.post(
-      "http://karfree-001-site1.atempurl.com/api/Transactions/UserPostTransaction",
-      transaction,
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
+    const resp = await customFetch.post(
+      "/Transactions/UserPostTransaction",
+      transaction
     );
     return resp.data.data;
   } catch (error) {
@@ -40,14 +28,9 @@ export const createUserTransactionThunk = async (transaction, thunkAPI) => {
 // confirm  user transaction
 export const confirmUserTransactionThunk = async (id, thunkAPI) => {
   try {
-    const resp = await axios.put(
-      `http://karfree-001-site1.atempurl.com/api/User/AcceptTransaction/${id}/?accept=true`,
-      { accept: "true" },
-      {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      }
+    const resp = await customFetch.put(
+      `/User/AcceptTransaction/${id}/?accept=true`,
+      { accept: "true" }
     );
     return resp.data.data;
   } catch (error) {
