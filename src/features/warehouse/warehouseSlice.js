@@ -5,11 +5,13 @@ import {
   getWarehouseListThunk,
   createWarehouseThunk,
   deleteWarehouseThunk,
+  getWarehouseDetailThunk,
 } from "../../api/warahouseApi";
 
 const initialState = {
   warehouseList: [],
   warehouse: "",
+  warehouseDetail: "",
   isLoading: false,
   warehouseDelete: false,
 };
@@ -27,6 +29,11 @@ export const createWarehouse = createAsyncThunk(
 export const deleteWarehouse = createAsyncThunk(
   "user/deleteWarehouse",
   deleteWarehouseThunk
+);
+
+export const getWarehouseDetail = createAsyncThunk(
+  "user/getWarehouseDetail",
+  getWarehouseDetailThunk
 );
 
 const warehouseSlice = createSlice({
@@ -75,6 +82,17 @@ const warehouseSlice = createSlice({
       toast.success(action.payload.message);
     },
     [deleteWarehouse.rejected]: (state, action) => {
+      state.isLoading = false;
+      toast.error(action.payload);
+    },
+    [getWarehouseDetail.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getWarehouseDetail.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.warehouseDetail = action.payload;
+    },
+    [getWarehouseDetail.rejected]: (state, action) => {
       state.isLoading = false;
       toast.error(action.payload);
     },

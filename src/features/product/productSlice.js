@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
+import { makePaginationList } from "../../utils/pagination";
+
 import {
   getProductListThunk,
   createProductThunk,
@@ -9,6 +11,7 @@ import {
 
 const initialState = {
   productList: [],
+  productPaginationList: [],
   isLoading: false,
   productDelete: false,
   productCreate: false,
@@ -37,7 +40,10 @@ const productSlice = createSlice({
     },
     [getProductList.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.productList = action.payload;
+      state.productList = action.payload.products;
+      state.productPaginationList = makePaginationList(
+        action.payload.totalProducts
+      );
     },
     [getProductList.rejected]: (state, action) => {
       state.isLoading = false;

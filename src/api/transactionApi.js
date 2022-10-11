@@ -1,9 +1,13 @@
 import { customFetch } from "./axios";
+import { initialPaginationSize } from "../utils/pagination";
 
 // get transaction list
-export const getTransactionListThunk = async (_, thunkAPI) => {
+export const getTransactionListThunk = async (Page, thunkAPI) => {
   try {
-    const resp = await customFetch("/Transactions");
+    const resp = await customFetch(
+      `/Transactions?Page=${Page}&Size=${initialPaginationSize}`
+    );
+
     return resp.data;
   } catch (error) {
     console.log(error, "error");

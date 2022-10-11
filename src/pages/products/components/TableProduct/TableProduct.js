@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { Table } from "reactstrap";
-import { InfoModal } from "../../../../componenets";
-import { deleteProduct } from "../../../../features/product/productSlice";
+import { InfoModal, PaginationComponent } from "../../../../componenets";
+
+import {
+  deleteProduct,
+  getProductList,
+} from "../../../../features/product/productSlice";
+import { useSelector } from "react-redux";
 
 const TableProduct = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteProductId, setDeleteProductId] = useState("");
+  // for paginationComponent
+  const { productPaginationList } = useSelector((store) => store.product);
   const [click, setClick] = useState(false);
 
   // delete row
@@ -63,6 +70,10 @@ const TableProduct = ({ data }) => {
           })}
         </tbody>
       </Table>
+      <PaginationComponent
+        func={getProductList}
+        paginationList={productPaginationList}
+      />
     </div>
   );
 };

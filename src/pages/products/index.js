@@ -27,7 +27,7 @@ const WareHouses = () => {
   // close  create Product  after navigation
   useEffect(() => {
     setShowCreateProduct(false);
-    dispatch(getProductList());
+    dispatch(getProductList(1));
   }, [productDelete, productCreate]);
 
   // show create product with button click

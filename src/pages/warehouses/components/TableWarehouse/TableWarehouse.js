@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { Table } from "reactstrap";
+import { NavLink } from "react-router-dom";
 import { InfoModal } from "../../../../componenets";
 import { deleteWarehouse } from "../../../../features/warehouse/warehouseSlice";
+import { FaWarehouse } from "react-icons/fa";
 
 const TableWarehouse = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -33,6 +35,7 @@ const TableWarehouse = ({ data }) => {
             <th>Name</th>
             <th>Place</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -53,6 +56,9 @@ const TableWarehouse = ({ data }) => {
                   >
                     <AiFillDelete />
                   </button>
+                </td>
+                <td>
+                  <NavLink to={`${id}`}>{<FaWarehouse />}</NavLink>
                 </td>
               </tr>
             );

@@ -6,15 +6,17 @@ import MakeTransaction from "./components/MakeTransaction/MakeTransaction";
 import "./transaction.css";
 
 const Transaction = () => {
-  const { transactionList } = useSelector((store) => store.transaction);
+  const { transactionCreated, transactionList } = useSelector(
+    (store) => store.transaction
+  );
   const [showTransactionCreate, setShowCreateTransaction] = useState(false);
   const dispatch = useDispatch();
 
   // close create transaction  after navigation
   useEffect(() => {
     setShowCreateTransaction(false);
-    dispatch(getTransactionList());
-  }, []);
+    dispatch(getTransactionList(1));
+  }, [transactionCreated]);
 
   // show create product with button click
   const handleClick = () => {

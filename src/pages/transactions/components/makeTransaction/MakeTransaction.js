@@ -15,7 +15,7 @@ const CreateTransaction = () => {
   const dispatch = useDispatch();
 
   const [transactionData, setTransactionData] = useState({
-    transactionNo: "",
+    // transactionNo: "",
     sender_id: null,
     receiver_id: "",
     productId: "",
@@ -38,7 +38,7 @@ const CreateTransaction = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      !transactionData.transactionNo ||
+      // !transactionData.transactionNo ||
       !transactionData.receiver_id ||
       !transactionData.productId ||
       !transactionData.count
@@ -66,7 +66,7 @@ const CreateTransaction = () => {
   // get warehouse list while loading
   useEffect(() => {
     dispatch(getWarehouseList());
-    dispatch(getProductList());
+    dispatch(getProductList(1));
   }, [getProductList, getWarehouseList]);
 
   return (
@@ -79,7 +79,7 @@ const CreateTransaction = () => {
         text='Confirm to make transaction'
       />
       <Form onSubmit={handleSubmit}>
-        <FormGroup>
+        {/* <FormGroup>
           <Label for='transactionNo'>Transaction N%</Label>
           <Input
             id='transactionNo'
@@ -88,7 +88,7 @@ const CreateTransaction = () => {
             type='text'
             onChange={handleChange}
           />
-        </FormGroup>
+        </FormGroup> */}
         <FormGroup>
           <Label for='sender_id'>Sender</Label>
           <Input

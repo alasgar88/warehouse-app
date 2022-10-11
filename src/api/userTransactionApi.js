@@ -26,10 +26,10 @@ export const createUserTransactionThunk = async (transaction, thunkAPI) => {
 };
 
 // confirm  user transaction
-export const confirmUserTransactionThunk = async (id, thunkAPI) => {
+export const confirmUserTransactionThunk = async (transactionId, thunkAPI) => {
   try {
     const resp = await customFetch.put(
-      `/User/AcceptTransaction/${id}/?accept=true`,
+      `/User/AcceptTransaction/${transactionId}/?accept=true`,
       { accept: "true" }
     );
     return resp.data.data;

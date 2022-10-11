@@ -58,7 +58,7 @@ const CreateUser = () => {
   // get warehouse list
   useEffect(() => {
     dispatch(getWarehouseList());
-  }, [getWarehouseList]);
+  }, [dispatch]);
 
   return (
     <div className='create-user-container'>

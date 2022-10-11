@@ -18,3 +18,5 @@ customFetch.interceptors.request.use(
     Promise.reject(error);
   }
 );
+
+export const paginationSize = 6;

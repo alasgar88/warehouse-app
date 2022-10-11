@@ -1,10 +1,13 @@
 import { customFetch } from "./axios";
+import { initialPaginationSize } from "../utils/pagination";
 
 // get product list
-export const getProductListThunk = async (_, thunkAPI) => {
+export const getProductListThunk = async (Page, thunkAPI) => {
   try {
-    const resp = await customFetch("/Products/GetProducts");
-    return resp.data.data.products;
+    const resp = await customFetch(
+      `/Products/GetProducts?Page=${Page}&Size=${initialPaginationSize}`
+    );
+    return resp.data.data;
   } catch (error) {
     console.log(error, "error");
     return thunkAPI.rejectWithValue(error.response.request.response);

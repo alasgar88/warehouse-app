@@ -57,7 +57,7 @@ const UserTableTransaction = ({ data }) => {
                 <td>
                   <button
                     onClick={() => {
-                      setTransactionId(id);
+                      setTransactionId(transactionNo);
                       setModalOpen(true);
                     }}
                     disabled={veziyyeti === "Qebul edildi"}

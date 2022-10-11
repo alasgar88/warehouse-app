@@ -14,7 +14,7 @@ const CreateTransaction = () => {
   const dispatch = useDispatch();
 
   const [transactionData, setTransactionData] = useState({
-    transactionNo: "H500",
+    // transactionNo: "H500",
     sender_id: false,
     receiver_id: null,
     productId: "3",
@@ -37,7 +37,7 @@ const CreateTransaction = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      !transactionData.transactionNo ||
+      // !transactionData.transactionNo ||
       !transactionData.receiver_id ||
       !transactionData.productId ||
       !transactionData.count
@@ -78,7 +78,7 @@ const CreateTransaction = () => {
         text='Confirm to make transaction'
       />
       <Form onSubmit={handleSubmit}>
-        <FormGroup>
+        {/* <FormGroup>
           <Label for='transactionNo'>Transaction N%</Label>
           <Input
             id='transactionNo'
@@ -87,7 +87,7 @@ const CreateTransaction = () => {
             type='text'
             onChange={handleChange}
           />
-        </FormGroup>
+        </FormGroup> */}
         <FormGroup>
           <Label for='sender_id'>Sender</Label>
           <Input

@@ -45,3 +45,14 @@ export const deleteWarehouseThunk = async (id, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
 };
+
+// create warehouse  house
+export const getWarehouseDetailThunk = async (id, thunkAPI) => {
+  try {
+    const resp = await customFetch(`/Warehouse/${id}`);
+    return resp.data.data;
+  } catch (error) {
+    console.log(error, "error");
+    return thunkAPI.rejectWithValue(error.response.request.response);
+  }
+};
