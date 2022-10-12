@@ -27,7 +27,7 @@ const WareHouses = () => {
   // close  create Product  after navigation
   useEffect(() => {
     setShowCreateProduct(false);
-    dispatch(getProductList(1));
+    dispatch(getProductList());
   }, [productDelete, productCreate]);
 
   // show create product with button click
@@ -38,7 +38,7 @@ const WareHouses = () => {
   // close CreateProduct component after user Created
   useEffect(() => {
     setShowCreateProduct(false);
-  }, [productList]);
+  }, [productCreate]);
 
   return (
     <div className='table-container'>

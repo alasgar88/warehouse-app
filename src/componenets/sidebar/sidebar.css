@@ -1,46 +1,56 @@
-.sidebar{
+.sidebar-menu {
     display: flex;
-
-    flex: 0 0 200px;
     flex-direction: column;
     align-items: center;
     background: white;
     text-align: center;
-    box-shadow: inset 2px 7px 2px #e8e4e4;
-    height: calc(100vh - 70px);
-    padding-top: 50px;
-}
 
-.menu-item{
+  
+}
+.menu-item-container{
     transition: 0.6s linear all;
     text-align: left;
-    padding: 10px 20px;
+    padding: 10px 30px;
+    width: 100%;
     display: flex;
     align-items: flex-start;
-    gap: 0px 16px;
+    gap: 0px 17px;
+    text-decoration: none;
+    color: grey;
 }
-.menu-item:hover{
-    transform: scale(1.05);
-    background: #cdf5fd;
-    border-radius: 5px;
-    color: white;
+
+.menu-item-container.minibar{
+    gap: 0 20px;
+    padding-left: 20px;
 }
-.menu-item:hover .icon{
+
+.menu-item-container.active{
+    transform: scale(1.05) !important;
+    background: #cdf5fd !important;
+    border-radius: 5px !important;
+    color: blue !important;
+}
+
+.menu-item-container.active .icon{
     color: blue;
 }
 
-.menu-link{
-    display: block;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    color: grey;
-} 
 
-.menu-link.active{
-    color:blue ;
+.menu-item-container:hover{
+    transform: scale(1.05);
+    background: #eefcfe;
+    border-radius: 5px;
 }
+.menu-item-container:hover .icon{
+    color: blue;
+}
+
+
 .icon{
     font-size: 14px;
     color: grey;
+}
+
+.icon.minibar{
+    font-size: 18px;
 }

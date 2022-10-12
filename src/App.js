@@ -27,7 +27,7 @@ function App() {
           }
         >
           <Route
-            index
+            path='/user'
             element={
               <AuthProtected>
                 <User />
@@ -35,7 +35,7 @@ function App() {
             }
           />
           <Route
-            path='products'
+            path='/products'
             element={
               <AuthProtected>
                 <Products />
@@ -43,7 +43,7 @@ function App() {
             }
           />
           <Route
-            path='transactions'
+            path='/transactions'
             element={
               <AuthProtected>
                 <Transactions />
@@ -51,7 +51,7 @@ function App() {
             }
           />
           <Route
-            path='warehouses'
+            path='/warehouses'
             element={
               <AuthProtected>
                 <Warehouses />
@@ -59,7 +59,7 @@ function App() {
             }
           />
           <Route
-            path='warehouses/:id'
+            path='/warehouses/:id'
             element={
               <AuthProtected>
                 <WarehouseDetail />

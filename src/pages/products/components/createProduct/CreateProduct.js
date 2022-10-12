@@ -3,7 +3,10 @@ import "./create-product.css";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { toast } from "react-toastify";
 import { InfoModal } from "../../../../componenets";
-import { createProduct } from "../../../../features/product/productSlice";
+import {
+  createProduct,
+  getProductList,
+} from "../../../../features/product/productSlice";
 import { getProductCategoryList } from "../../../../features/category/categorySlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -20,8 +23,6 @@ const CreateWareHouse = () => {
     Description: "",
     CategoryId: "",
   });
-
-  console.log(productData, "productData");
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -203,6 +204,7 @@ const CreateWareHouse = () => {
             onChange={handleChange}
           />
         </FormGroup>
+
         <Button>Create Product</Button>
       </Form>
     </div>

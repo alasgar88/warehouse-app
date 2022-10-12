@@ -3,6 +3,8 @@ import { Table } from "reactstrap";
 import "./user-table-transaction.css";
 import { confirmUserTransaction } from "../../../../features/userTransaction/userTransactionSlice";
 import { InfoModal } from "../../../../componenets";
+import { shortName } from "../../../../utils/utils";
+import { AiOutlineEye } from "react-icons/ai";
 
 const UserTableTransaction = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,35 +23,45 @@ const UserTableTransaction = ({ data }) => {
       <Table hover>
         <thead>
           <tr>
-            <th>N%</th>
+            {/* <th>N%</th> */}
             <th>Sender</th>
             <th>From</th>
-            <th>Category</th>
+            {/* <th>Category</th> */}
             <th>Product</th>
             <th>Count</th>
             <th>Time</th>
             <th>State</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {data?.map((transaction, index) => {
-            const {
+            let {
               id,
               transactionNo,
               kim,
               hardan,
-              kateqoriyasi,
+              // kateqoriyasi,
               mehsul,
               miqdar,
               nevaxt,
               veziyyeti,
             } = transaction;
+            // short data
+            if (kim === "-") {
+              kim = "Admin";
+            } else {
+              kim = shortName(kim, 10);
+            }
+
+            mehsul = shortName(mehsul, 22);
+            nevaxt = nevaxt.substring(0, nevaxt.indexOf(":"));
             return (
               <tr key={id}>
-                <td>{transactionNo}</td>
-                <td>{kim === "-" ? "Admin" : kim}</td>
+                {/* <td>{transactionNo}</td> */}
+                <td>{kim}</td>
                 <td>{hardan}</td>
-                <td>{kateqoriyasi}</td>
+                {/* <td>{kateqoriyasi}</td> */}
                 <td>{mehsul}</td>
                 <td>{miqdar}</td>
                 <td>{nevaxt}</td>
@@ -68,7 +80,11 @@ const UserTableTransaction = ({ data }) => {
                     {veziyyeti === "Qebul edildi" ? "Accepted" : "Pending"}
                   </button>
                 </td>
-                <td></td>
+                <td>
+                  <span className='last-icon detail-icon'>
+                    <AiOutlineEye />
+                  </span>
+                </td>
               </tr>
             );
           })}

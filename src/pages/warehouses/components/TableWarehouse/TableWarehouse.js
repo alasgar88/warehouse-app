@@ -45,7 +45,7 @@ const TableWarehouse = ({ data }) => {
               <tr key={index}>
                 <td>{name}</td>
                 <td>{place}</td>
-                <td>
+                <td className='not-last-icon'>
                   <button
                     className='delete-button'
                     onClick={() => {
@@ -57,7 +57,7 @@ const TableWarehouse = ({ data }) => {
                     <AiFillDelete />
                   </button>
                 </td>
-                <td>
+                <td className='last-icon'>
                   <NavLink to={`${id}`}>{<FaWarehouse />}</NavLink>
                 </td>
               </tr>

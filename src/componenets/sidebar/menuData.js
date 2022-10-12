@@ -3,12 +3,13 @@ import { MdProductionQuantityLimits } from "react-icons/md";
 import "./sidebar.css";
 import { GrTransaction } from "react-icons/gr";
 import { FaWarehouse } from "react-icons/fa";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 export const adminMenu = [
   {
     label: "Users",
     icon: <FaUserAlt />,
-    path: "/",
+    path: "/user",
     id: 0,
   },
   {
@@ -17,7 +18,11 @@ export const adminMenu = [
     path: "/products",
     id: 1,
   },
-  { label: "Transactions", icon: <GrTransaction />, path: "/transactions" },
+  {
+    label: "Transactions",
+    icon: <BsFillArrowRightCircleFill />,
+    path: "/transactions",
+  },
   {
     label: "Warehouses",
     icon: <FaWarehouse />,

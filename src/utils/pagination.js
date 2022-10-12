@@ -1,4 +1,4 @@
-export const initialPaginationSize = 6;
+export const initialPaginationSize = 5;
 
 export const makePaginationList = (
   totalNumber,

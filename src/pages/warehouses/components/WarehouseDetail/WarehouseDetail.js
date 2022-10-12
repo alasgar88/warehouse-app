@@ -84,7 +84,7 @@ const WarehouseDetail = () => {
               </div>
             </AccordionBody>
           </AccordionItem>
-          <AccordionItem>
+          {/* <AccordionItem>
             <AccordionHeader targetId='2'>Transaction</AccordionHeader>
             <AccordionBody accordionId='2'>
               <strong>This is the second item&#39;s accordion body.</strong>
@@ -93,7 +93,7 @@ const WarehouseDetail = () => {
               HTML can go within the <code>.accordion-body</code>, though the
               transition does limit overflow.
             </AccordionBody>
-          </AccordionItem>
+          </AccordionItem> */}
         </Accordion>
       </div>
     </>

@@ -15,9 +15,10 @@ export const loginUserThunk = async (user, thunkAPI) => {
 export const createUserThunk = async (user, thunkAPI) => {
   try {
     const resp = await customFetch.post("/Admin/CreateUser", user);
+    console.log(resp, "resp data");
     return resp.data;
   } catch (error) {
-    console.log(error.response.request.response);
+    console.log(error, "error");
     return thunkAPI.rejectWithValue(error.response.request.response);
   }
 };

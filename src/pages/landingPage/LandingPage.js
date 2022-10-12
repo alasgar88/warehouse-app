@@ -22,9 +22,8 @@ const LandingPage = () => {
     }
     dispatch(loginUser(userValue));
     setUserValue({ Email: "", Password: "" });
-    console.log("burdayam");
     setTimeout(() => {
-      navigate("/");
+      navigate("/user");
     }, 1000);
   };
 

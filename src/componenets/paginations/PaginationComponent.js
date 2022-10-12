@@ -30,10 +30,9 @@ const PaginationComponent = ({ func, paginationList }) => {
         </PaginationItem>
       )}
 
-      {paginationList.map((item) => {
-        console.log(item);
+      {paginationList.map((item, index) => {
         return (
-          <PaginationItem active={page === item}>
+          <PaginationItem active={page === item} key={index}>
             <PaginationLink
               href='#'
               onClick={() => {

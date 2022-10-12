@@ -27,19 +27,24 @@ const Navbar = () => {
                 className='user-logout-container'
                 onClick={() => setShowLogoutButton(!showLogoutButton)}
               >
-                <span className='user-icon'>
-                  <AiOutlineUserAdd />
-                </span>
-                <p className='user-name'>{user.role}</p>
-                <button
-                  className={`logout-button ${showLogoutButton && "active"}`}
-                  onClick={handleClick}
+                <div className='loged-user-info'>
+                  <span className='user-icon'>
+                    <AiOutlineUserAdd />
+                  </span>
+                  <p className='user-name'>{user.role}</p>
+                  <span className='arrow-down'>
+                    <AiFillCaretDown />
+                  </span>
+                </div>
+                <div
+                  className={`logout-container  ${
+                    showLogoutButton && "active"
+                  }`}
                 >
-                  Logout
-                </button>
-                <span className='arrow-down'>
-                  <AiFillCaretDown />
-                </span>
+                  <button className='logout-button' onClick={handleClick}>
+                    Logout
+                  </button>
+                </div>
               </div>
             </>
           )}

@@ -7,6 +7,7 @@ import { createTransaction } from "../../../../features/transaction/transactionS
 import { getWarehouseList } from "../../../../features/warehouse/warehouseSlice";
 import { getProductList } from "../../../../features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { InfiniteScrollSelect } from "../../../../componenets";
 
 const CreateTransaction = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -79,16 +80,6 @@ const CreateTransaction = () => {
         text='Confirm to make transaction'
       />
       <Form onSubmit={handleSubmit}>
-        {/* <FormGroup>
-          <Label for='transactionNo'>Transaction N%</Label>
-          <Input
-            id='transactionNo'
-            name='transactionNo'
-            placeholder='enter transaction number'
-            type='text'
-            onChange={handleChange}
-          />
-        </FormGroup> */}
         <FormGroup>
           <Label for='sender_id'>Sender</Label>
           <Input
@@ -132,7 +123,7 @@ const CreateTransaction = () => {
               })}
           </Input>
         </FormGroup>
-        <FormGroup>
+        {/* <FormGroup>
           <Label for='productId'>Product</Label>
           <Input
             className='mb-3'
@@ -151,7 +142,14 @@ const CreateTransaction = () => {
                 );
               })}
           </Input>
-        </FormGroup>
+        </FormGroup> */}
+        <InfiniteScrollSelect
+          getDataObject={getProductList}
+          dataListName='products'
+          setFormData={setTransactionData}
+          inputFieldName='productId'
+          inputFieldLabel='Select product'
+        />
         <FormGroup>
           <Label for='count'>Product count</Label>
           <Input
@@ -163,7 +161,7 @@ const CreateTransaction = () => {
           />
         </FormGroup>
 
-        <Button>Create warehouse</Button>
+        <Button>Make transaction</Button>
       </Form>
     </div>
   );

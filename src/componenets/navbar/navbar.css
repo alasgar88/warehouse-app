@@ -8,12 +8,16 @@
 .navbar-center{
     background: white;
     box-shadow: 2px 2px 2px 5px #e8e4e4;
+    position: fixed;
+    width: 100vw;
+    z-index: 100;
 }
 .navbar{
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
+
     
 }
 
@@ -40,34 +44,63 @@
     background: blue;
     color: white;
     border-radius: 5px;
+    position: relative;
+    padding: 5px 10px;
+    gap: 0 5px;
+    cursor: pointer;
+    width: 108px;
+    line-height: 1px;
+}
+.loged-user-info{
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    padding: 3px 10px;
-    gap: 0 5px;
-    cursor: pointer;
+    padding: 3px 0px;
+    gap: 0 3px;
+    font-weight: 400;
+    font-size: 14px;
 }
+
 .user-logout-container p{
     margin-bottom: 0;
+}
+.logout-container{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background:white;
+    left: 0px;
+    width: 108px;
+    height: 0px;
+    overflow: hidden;
+    transition: 0.5s linear all;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    top: 32px;
 }
 
 .logout-button{
     border: none;
-    background: rgb(86, 86, 119);
-    color: white;
-    padding: 3px 32px;
-    border-radius: 5px;
-    font-weight: 600;
+    background: inherit;
+    color:blue;
+    line-height: 30px;
+    font-weight: 500;
     font-size: 14px;
-    position: absolute;
-    visibility: hidden;
+    width: 100%
 }
 
-.logout-button.active{
-    visibility: visible;
-    top: 35px;
+.logout-button:hover{
+    /* transform: scale(1.05); */
+    background: #cdf5fd;
+    color: blue
+    /* border-radius: 5px; */
 }
+
+.logout-container.active{
+    height: 40px;
+}
+
+
 
 .user-icon{
     font-weight: 600;

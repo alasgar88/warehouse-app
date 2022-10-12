@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { Table } from "reactstrap";
 import { InfoModal, PaginationComponent } from "../../../../componenets";
+import { AiOutlineEye } from "react-icons/ai";
+import { shortName } from "../../../../utils/utils";
 
 import {
   deleteProduct,
@@ -15,6 +17,11 @@ const TableProduct = ({ data }) => {
   // for paginationComponent
   const { productPaginationList } = useSelector((store) => store.product);
   const [click, setClick] = useState(false);
+
+  // get detail
+  const handleClickDetail = () => {
+    console.log("detail");
+  };
 
   // delete row
   useEffect(() => {
@@ -42,18 +49,20 @@ const TableProduct = ({ data }) => {
             <th>Buy Price</th>
             <th>Sell Price</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {data?.map((product, index) => {
-            const { name, category, buyPrice, sellPrice, id } = product;
+            let { name, category, buyPrice, sellPrice, id } = product;
+            name = shortName(name);
             return (
               <tr key={index}>
                 <td>{name}</td>
                 <td>{category}</td>
                 <td>{buyPrice}</td>
                 <td>{sellPrice}</td>
-                <td>
+                <td className='not-last-icon'>
                   <button
                     className='delete-button'
                     onClick={() => {
@@ -64,6 +73,12 @@ const TableProduct = ({ data }) => {
                   >
                     <AiFillDelete />
                   </button>
+                </td>
+                <td
+                  className='last-icon detail-icon'
+                  onClick={handleClickDetail}
+                >
+                  <AiOutlineEye />
                 </td>
               </tr>
             );

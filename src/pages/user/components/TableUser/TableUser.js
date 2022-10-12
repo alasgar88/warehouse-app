@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Table } from "reactstrap";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { AiFillEye, AiOutlineEye } from "react-icons/ai";
 import { editUser } from "../../../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { InfoModal } from "../../../../componenets";
@@ -14,6 +15,10 @@ const TableUser = ({ data, setShowEditUser }) => {
     id: "",
     status: false,
   });
+
+  const handleDetail = () => {
+    console.log("detail");
+  };
   return (
     <div className='table-container'>
       <InfoModal
@@ -32,7 +37,8 @@ const TableUser = ({ data, setShowEditUser }) => {
             <th>Username</th>
             <th>Email</th>
             <th>Phone Number</th>
-            <th>Address</th>
+            {/* <th>Address</th> */}
+            <th>Status</th>
             <th></th>
             <th></th>
           </tr>
@@ -45,19 +51,7 @@ const TableUser = ({ data, setShowEditUser }) => {
                 <th>{userName}</th>
                 <td>{email}</td>
                 <td>{phoneNumber}</td>
-                <td>{address}</td>
-                <td>
-                  {/* open edit container */}
-                  <button
-                    className='delete-button'
-                    onClick={() => {
-                      dispatch(editUser(email));
-                      setShowEditUser(true);
-                    }}
-                  >
-                    <RiLockPasswordLine />
-                  </button>
-                </td>
+                {/* <td>{address}</td> */}
                 <td>
                   <button
                     className={`state-button ${
@@ -70,6 +64,23 @@ const TableUser = ({ data, setShowEditUser }) => {
                   >
                     {status ? "deactivate" : "activate"}
                   </button>
+                </td>
+                <td className='not-last-icon'>
+                  {/* open edit container */}
+                  <button
+                    className='delete-button'
+                    onClick={() => {
+                      dispatch(editUser(email));
+                      setShowEditUser(true);
+                    }}
+                  >
+                    <RiLockPasswordLine />
+                  </button>
+                </td>
+                <td className='last-icon'>
+                  <span className='detail-icon' onClick={handleDetail}>
+                    <AiOutlineEye />
+                  </span>
                 </td>
               </tr>
             );

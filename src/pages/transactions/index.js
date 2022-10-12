@@ -15,7 +15,7 @@ const Transaction = () => {
   // close create transaction  after navigation
   useEffect(() => {
     setShowCreateTransaction(false);
-    dispatch(getTransactionList(1));
+    dispatch(getTransactionList());
   }, [transactionCreated]);
 
   // show create product with button click

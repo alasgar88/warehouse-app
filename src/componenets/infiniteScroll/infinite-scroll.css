@@ -1,0 +1,31 @@
+.data-list{
+    height: 150px;
+    list-style-type:none;
+    border-radius: 6px;
+    border: 1px solid #D8DDE1;
+    overflow-x: hidden;
+    display: none;
+}
+
+.data-item{
+    padding: 7px 0;
+    position: relative;
+    left: -32px;
+    padding-left: 10px;
+    width: 109%;
+    cursor: pointer;
+}
+
+.data-item:hover{
+    background: #0000FF;
+    color: white;
+}
+
+.data-list.show{
+    display: block;
+}
+
+.spinner-container{
+    display: flex;
+    justify-content: center;
+}
