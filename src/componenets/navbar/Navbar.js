@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import img from "../../assets/warehouse-logo.jpg";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,8 @@ const Navbar = () => {
     dispatch(removeUser());
   };
 
+  useEffect(() => {});
+
   return (
     <div className='navbar-center'>
       <div className='section-center'>
@@ -25,7 +27,12 @@ const Navbar = () => {
             <>
               <div
                 className='user-logout-container'
-                onClick={() => setShowLogoutButton(!showLogoutButton)}
+                onClick={() => {
+                  setShowLogoutButton(true);
+                  setTimeout(() => {
+                    setShowLogoutButton(false);
+                  }, 2000);
+                }}
               >
                 <div className='loged-user-info'>
                   <span className='user-icon'>

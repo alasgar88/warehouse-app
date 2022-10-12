@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import "./landing.css";
@@ -6,10 +6,10 @@ import { loginUser } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../../componenets";
-import { FormGroup, Label, Input, Button, Form } from "reactstrap";
+import { FormGroup, Label, Input, Button, Form, Spinner } from "reactstrap";
 
 const LandingPage = () => {
-  const { isLoading } = useSelector((store) => store.user);
+  const { isLoading, userLogged } = useSelector((store) => store.user);
   const [userValue, setUserValue] = useState({ Email: "", Password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,11 +21,16 @@ const LandingPage = () => {
       return;
     }
     dispatch(loginUser(userValue));
-    setUserValue({ Email: "", Password: "" });
-    setTimeout(() => {
-      navigate("/user");
-    }, 1000);
   };
+
+  useEffect(() => {
+    if (userLogged) {
+      setTimeout(() => {
+        navigate("/user");
+      }, 1000);
+      setUserValue({ Email: "", Password: "" });
+    }
+  }, [userLogged]);
 
   const handleChange = (e) => {
     const value = e.target.value.toString();
@@ -69,6 +74,11 @@ const LandingPage = () => {
                 Submit
               </Button>
             </Form>
+            {isLoading && (
+              <div className='spinner-container'>
+                <Spinner color='primary'>Loading...</Spinner>
+              </div>
+            )}
           </div>
         </div>
       </section>

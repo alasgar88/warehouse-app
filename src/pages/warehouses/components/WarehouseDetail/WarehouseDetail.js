@@ -68,8 +68,8 @@ const WarehouseDetail = () => {
       <div className='fusion-chart-container'>
         <ReactFusioncharts
           type='column3d'
-          width='50%'
-          height='70%'
+          width='80%'
+          height='9d0%'
           dataFormat='JSON'
           dataSource={dataSource}
         />

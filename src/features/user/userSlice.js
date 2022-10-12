@@ -17,6 +17,7 @@ import {
 const initialState = {
   user: getUserFromLocalStorage(),
   isLoading: false,
+  userLogged: false,
   editUserEmail: "",
   userCreate: false,
   userStatus: false,
@@ -53,6 +54,7 @@ const userSlice = createSlice({
     removeUser: (state) => {
       state.user = "";
       removeUserFromLocalStorage();
+      state.userLogged = false;
     },
     editUser: (state, { payload }) => {
       state.editUserEmail = payload;
@@ -66,6 +68,7 @@ const userSlice = createSlice({
     [loginUser.fulfilled]: (state, action) => {
       console.log(action.payload, "alasgar");
       state.isLoading = false;
+      state.userLogged = true;
       state.user = action.payload;
       toast.success("User logged succesfully");
       addUserToLocalStorage(action.payload);

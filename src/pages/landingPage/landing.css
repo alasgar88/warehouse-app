@@ -17,3 +17,11 @@
     align-items: center;
     flex: 0 0 100px;
 }
+
+.spinner-container{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 30px;
+    z-index: 101;
+}
