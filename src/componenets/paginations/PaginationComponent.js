@@ -1,10 +1,21 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+  Spinner,
+} from "reactstrap";
 
-const PaginationComponent = ({ func, paginationList }) => {
-  const [page, setPage] = useState(1);
+const PaginationComponent = ({ func, paginationList, storeName }) => {
   const dispatch = useDispatch();
+  console.log(storeName, "storeName");
+  var storeObject = useSelector((store) => store[storeName]);
+  if (storeObject) {
+    var isLoading = storeObject.isLoading;
+  }
+  const [page, setPage] = useState(1);
+
   return (
     <Pagination>
       <PaginationItem>
@@ -40,7 +51,13 @@ const PaginationComponent = ({ func, paginationList }) => {
                 setPage(item);
               }}
             >
-              {item}
+              {page === item && isLoading ? (
+                <Spinner color='light' size='sm'>
+                  Loading...
+                </Spinner>
+              ) : (
+                item
+              )}
             </PaginationLink>
           </PaginationItem>
         );

@@ -28,7 +28,7 @@ const LandingPage = () => {
       setTimeout(() => {
         navigate("/user");
       }, 1000);
-      setUserValue({ Email: "", Password: "" });
+      // setUserValue({ Email: "", Password: "" });
     }
   }, [userLogged]);
 
@@ -39,6 +39,7 @@ const LandingPage = () => {
       return { ...oldValue, [name]: value };
     });
   };
+
   return (
     <>
       <Navbar />
@@ -70,15 +71,21 @@ const LandingPage = () => {
                 />
                 <Label for='examplePassword'>Password</Label>
               </FormGroup>{" "}
-              <Button type='submit' disabled={isLoading}>
-                Submit
+              <Button
+                color='primary'
+                type='submit'
+                disabled={isLoading}
+                className='submit-button'
+              >
+                {isLoading ? (
+                  <Spinner color='light' size='sm'>
+                    Loading...
+                  </Spinner>
+                ) : (
+                  "Login"
+                )}
               </Button>
             </Form>
-            {isLoading && (
-              <div className='spinner-container'>
-                <Spinner color='primary'>Loading...</Spinner>
-              </div>
-            )}
           </div>
         </div>
       </section>

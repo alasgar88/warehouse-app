@@ -93,6 +93,7 @@ const TableProduct = ({ data }) => {
       <PaginationComponent
         func={getProductList}
         paginationList={productPaginationList}
+        storeName='product'
       />
       <DetailProduct
         detailModalOpen={detailModalOpen}

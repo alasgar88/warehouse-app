@@ -53,6 +53,7 @@ const TableTransaction = ({ data }) => {
       <PaginationComponent
         paginationList={transactionPaginationList}
         func={getTransactionList}
+        storeName='transaction'
       />
       <DetailTransaction
         detailModalOpen={detailModalOpen}
