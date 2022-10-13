@@ -4,6 +4,7 @@ import { Table } from "reactstrap";
 import { InfoModal, PaginationComponent } from "../../../../componenets";
 import { AiOutlineEye } from "react-icons/ai";
 import { shortName } from "../../../../utils/utils";
+import DetailProduct from "../detailProduct/DetailProduct";
 
 import {
   deleteProduct,
@@ -13,15 +14,16 @@ import { useSelector } from "react-redux";
 
 const TableProduct = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  // for detail info
+  const [detailInfo, setDetailInfo] = useState([]);
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
+  // endof for detail info
+
   const [deleteProductId, setDeleteProductId] = useState("");
+  // endof for detail info
   // for paginationComponent
   const { productPaginationList } = useSelector((store) => store.product);
   const [click, setClick] = useState(false);
-
-  // get detail
-  const handleClickDetail = () => {
-    console.log("detail");
-  };
 
   // delete row
   useEffect(() => {
@@ -55,10 +57,10 @@ const TableProduct = ({ data }) => {
         <tbody>
           {data?.map((product, index) => {
             let { name, category, buyPrice, sellPrice, id } = product;
-            name = shortName(name);
+            const newName = shortName(name);
             return (
               <tr key={index}>
-                <td>{name}</td>
+                <td>{newName}</td>
                 <td>{category}</td>
                 <td>{buyPrice}</td>
                 <td>{sellPrice}</td>
@@ -76,7 +78,10 @@ const TableProduct = ({ data }) => {
                 </td>
                 <td
                   className='last-icon detail-icon'
-                  onClick={handleClickDetail}
+                  onClick={() => {
+                    setDetailInfo(product);
+                    setDetailModalOpen(true);
+                  }}
                 >
                   <AiOutlineEye />
                 </td>
@@ -88,6 +93,11 @@ const TableProduct = ({ data }) => {
       <PaginationComponent
         func={getProductList}
         paginationList={productPaginationList}
+      />
+      <DetailProduct
+        detailModalOpen={detailModalOpen}
+        setDetailModalOpen={setDetailModalOpen}
+        data={detailInfo}
       />
     </div>
   );

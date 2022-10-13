@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import { Table } from "reactstrap";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { AiFillEye, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 import { editUser } from "../../../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { InfoModal } from "../../../../componenets";
+import DetailUser from "../detailUser/DetailUser";
 import { deactiveOrActiveUser } from "../../../../features/user/userSlice";
 import "./table-user.css";
 
 const TableUser = ({ data, setShowEditUser }) => {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
+  // for detail info
+  const [detailInfo, setDetailInfo] = useState([]);
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
+  // endof for detail info
   const [userStatusData, setUserStatusData] = useState({
     id: "",
     status: false,
   });
 
-  const handleDetail = () => {
-    console.log("detail");
-  };
   return (
     <div className='table-container'>
       <InfoModal
@@ -77,8 +79,15 @@ const TableUser = ({ data, setShowEditUser }) => {
                     <RiLockPasswordLine />
                   </button>
                 </td>
+                {/* open detail modal */}
                 <td className='last-icon'>
-                  <span className='detail-icon' onClick={handleDetail}>
+                  <span
+                    className='detail-icon'
+                    onClick={() => {
+                      setDetailInfo(user);
+                      setDetailModalOpen(true);
+                    }}
+                  >
                     <AiOutlineEye />
                   </span>
                 </td>
@@ -87,6 +96,11 @@ const TableUser = ({ data, setShowEditUser }) => {
           })}
         </tbody>
       </Table>
+      <DetailUser
+        detailModalOpen={detailModalOpen}
+        setDetailModalOpen={setDetailModalOpen}
+        data={detailInfo}
+      />
     </div>
   );
 };

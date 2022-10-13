@@ -5,10 +5,15 @@ import { confirmUserTransaction } from "../../../../features/userTransaction/use
 import { InfoModal } from "../../../../componenets";
 import { shortName } from "../../../../utils/utils";
 import { AiOutlineEye } from "react-icons/ai";
+import DetailTransaction from "../../../userTransaction/components/detailTransaction/DetailTransaction";
 
 const UserTableTransaction = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [transactionId, setTransactionId] = useState(false);
+  // for detail info
+  const [detailInfo, setDetailInfo] = useState([]);
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
+  // endof for detail info
 
   return (
     <div className='table-container'>
@@ -80,7 +85,13 @@ const UserTableTransaction = ({ data }) => {
                     {veziyyeti === "Qebul edildi" ? "Accepted" : "Pending"}
                   </button>
                 </td>
-                <td>
+                <td
+                  className='last-icon detail-icon'
+                  onClick={() => {
+                    setDetailInfo(transaction);
+                    setDetailModalOpen(true);
+                  }}
+                >
                   <span className='last-icon detail-icon'>
                     <AiOutlineEye />
                   </span>
@@ -90,6 +101,11 @@ const UserTableTransaction = ({ data }) => {
           })}
         </tbody>
       </Table>
+      <DetailTransaction
+        detailModalOpen={detailModalOpen}
+        setDetailModalOpen={setDetailModalOpen}
+        data={detailInfo}
+      />
     </div>
   );
 };

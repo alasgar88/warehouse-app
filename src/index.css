@@ -66,3 +66,33 @@ width: 0px !important;
   font-size: 18px;
   cursor: pointer;
 }
+
+/* detail modal component style */
+.detail-info-container{
+  padding-left:20px;
+}
+.modal-header{
+  padding-left: 33px;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.defail-info-row{
+  display: flex;
+  width: 100%;
+  padding: 15px 0px;
+  border-bottom: 1px dotted rgb(87, 87, 244);
+}
+
+.detail-name-col{
+  flex: 0 0 120px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.detail-value-col{
+  flex: 1 0 auto;
+  font-weight: 300;
+  font-size: 15px;
+
+}

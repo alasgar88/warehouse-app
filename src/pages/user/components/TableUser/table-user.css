@@ -9,9 +9,9 @@
 }
 
 .deactivate{
-    background: rgb(248, 166, 166);
+    background: red;
 }
 
 .activate{
-    background: rgb(154, 154, 246);
+    background: green;
 }

@@ -12,13 +12,11 @@ const SharedLayout = () => {
   const [pageYOffset, setPageYOffset] = useState(50);
   const dispatch = useDispatch();
   // const ref = useRef();
-  console.log(pageYOffset, "offset");
 
   const scrollFunc = () => {
     // ref.current.style.paddingTop = `${pageYOffset}rem`;
     // console.log(ref.current, "refcurrent");
     const paddingValue = Math.floor(window.pageYOffset);
-    console.log(paddingValue, "p");
     setPageYOffset(paddingValue + 50);
   };
   useEffect(() => {

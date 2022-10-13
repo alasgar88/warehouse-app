@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserTransactionList } from "../../features/userTransaction/userTransactionSlice";
 import UserTableTransaction from "./components/userTableTransaction/UserTableTransaction";
-import MakeUserTransaction from "./components/MakeUserTransaction/MakeUserTransaction";
+// import MakeUserTransaction from "./components/MakeUserTransaction/MakeUserTransaction";
 
 const UserTransaction = () => {
   const { transactionList, userTransactionCreate, transactionState } =
@@ -16,7 +16,6 @@ const UserTransaction = () => {
     setShowUserCreateTransaction(false);
     dispatch(getUserTransactionList());
   }, [userTransactionCreate, transactionState]);
-  console.log(transactionList, "transactionLista");
 
   // show create product with button click
   const handleClick = () => {
