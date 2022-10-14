@@ -15,7 +15,7 @@ const TableTransaction = ({ data }) => {
   const [detailModalOpen, setDetailModalOpen] = useState(false);
   // endof for detail info
   return (
-    <div className='table-container'>
+    <div className='table-container main-table'>
       <h3 className='table-title'>Transaction</h3>
       <Table hover>
         <thead>
@@ -23,7 +23,7 @@ const TableTransaction = ({ data }) => {
             <th>Sender</th>
             <th>Receiver</th>
             <th>Product</th>
-            <th>count</th>
+            <th>Count</th>
             <th></th>
           </tr>
         </thead>

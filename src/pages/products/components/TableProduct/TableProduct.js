@@ -34,7 +34,7 @@ const TableProduct = ({ data }) => {
   }, [click]);
 
   return (
-    <div className='table-container'>
+    <div className='table-container main-table'>
       <InfoModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}

@@ -10,18 +10,19 @@
 .menu-item-container{
     transition: 0.6s linear all;
     text-align: left;
-    padding: 10px 30px;
+    padding: 10px 20px;
     width: 100%;
     display: flex;
-    align-items: flex-start;
-    gap: 0px 17px;
+    align-items: baseline;
+    gap: 0px 20px;
     text-decoration: none;
     color: grey;
+    font-size: 16px;
+    line-height: 18px;
 }
 
 .menu-item-container.minibar{
-    gap: 0 20px;
-    padding-left: 20px;
+    gap: 0 23px;
 }
 
 .menu-item-container.active{
@@ -47,10 +48,10 @@
 
 
 .icon{
-    font-size: 14px;
+    font-size: 18px;
     color: grey;
 }
 
 .icon.minibar{
-    font-size: 18px;
+    /* font-size: 18px; */
 }

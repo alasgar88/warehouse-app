@@ -29,13 +29,13 @@ const UserTransaction = () => {
 
   return (
     <div className='table-container'>
-      {/* <div className='button-container'>
+      <div className='button-container'>
         <button className='category-button' onClick={handleClick}>
           {showUserTransactionCreate
             ? "Transaction List"
             : "Create transaction"}
         </button>
-      </div> */}
+      </div>
       {/* {showUserTransactionCreate ? (
         <MakeUserTransaction />
       ) : (

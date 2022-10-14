@@ -20,7 +20,7 @@ const TableWarehouse = ({ data }) => {
   }, [click]);
 
   return (
-    <div className='table-container'>
+    <div className='table-container main-table'>
       <InfoModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
@@ -29,7 +29,7 @@ const TableWarehouse = ({ data }) => {
         text='Confirm to delete warehouse'
       />
       <h3 className='table-title'>Warehouses</h3>
-      <Table hover>
+      <Table hover responsive>
         <thead>
           <tr>
             <th>Name</th>

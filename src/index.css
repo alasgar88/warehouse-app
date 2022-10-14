@@ -25,9 +25,14 @@ code {
     flex-direction: column;
     background: white;
 }
+
+.table-container.main-table {
+  min-height: 400px;
+}
 .table-title{
     margin-bottom: 30px;
 }
+
 
 .state-button {
     border: none;
@@ -41,10 +46,11 @@ code {
 .category-button{
     border: none;
     border-radius: 5px;
-    padding: 10px 10px;
+    padding: 8px 6px;
     background: blue;
     color: white;
     font-size: 12px;
+    width: 112px;
 }
 
 .category-button:hover{
@@ -96,3 +102,4 @@ width: 0px !important;
   font-size: 15px;
 
 }
+
