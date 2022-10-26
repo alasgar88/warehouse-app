@@ -7,12 +7,14 @@
 
 }
 .navbar-center{
-    background: white;
-    box-shadow: 2px 2px 2px 5px #e8e4e4;
+    /* background: white; */
+    /* box-shadow: 2px 2px 2px 5px #e8e4e4; */
     position: fixed;
     width: 100%;
     z-index: 100;
     padding: 15px 0px;
+    background: #350D36;
+    
 }
 .navbar{
     display: flex;
@@ -28,7 +30,8 @@
     height:calc(100vh - 80px);
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+    align-items: flex-start;
 }
 
 .logo{
@@ -47,7 +50,7 @@
 }
 
 .user-logout-container{
-    background: blue;
+    /* background: blue; */
     color: white;
     border-radius: 5px;
     position: relative;
@@ -56,6 +59,8 @@
     cursor: pointer;
     width: 108px;
     line-height: 1px;
+    border: 1px solid grey;
+
 }
 .loged-user-info{
     display: flex;
@@ -74,8 +79,9 @@
     display: flex;
     align-items: center;
     position: absolute;
-    background:white;
-    left: 0px;
+    /* background:white; */
+    background: #350D36;
+    left: -1px;
     width: 108px;
     height: 0px;
     overflow: hidden;
@@ -83,13 +89,16 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     top: 32px;
+    /* border: 1px solid grey; */
+    /* border-bottom: 1px solid grey; */
 }
 
 .logout-button{
     border: none;
     background: inherit;
-    color:blue;
-    line-height: 30px;
+    color:white;
+    height: 100%;
+    /* line-height: 30px; */
     font-weight: 500;
     font-size: 14px;
     width: 100%
@@ -97,16 +106,18 @@
 
 .logout-button:hover{
     /* transform: scale(1.05); */
-    background: #cdf5fd;
-    color: blue
+    /* background: #cdf5fd; */
+    /* color: blue */
     /* border-radius: 5px; */
+    /* color: white; */
+   background: #3F0E40;
 }
 
 .logout-container.active{
-    height: 40px;
+    height: 33px;
+    border: 1px solid grey;
+
 }
-
-
 
 .user-icon{
     font-weight: 600;

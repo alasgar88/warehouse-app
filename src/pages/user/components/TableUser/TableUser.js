@@ -22,7 +22,7 @@ const TableUser = ({ data, setShowEditUser }) => {
   });
 
   return (
-    <div className='table-container main-table'>
+    <div className='table-container'>
       <InfoModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
@@ -41,7 +41,7 @@ const TableUser = ({ data, setShowEditUser }) => {
             <th>Phone Number</th>
             {/* <th>Address</th> */}
             <th>Status</th>
-            <th></th>
+            <th className='action-column'>Action</th>
             <th></th>
           </tr>
         </thead>

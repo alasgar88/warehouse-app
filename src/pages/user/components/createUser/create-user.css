@@ -2,7 +2,9 @@
     padding: 30px;
     background: white;
     margin: 0 auto;
-    box-shadow: inset 2px 2px  5px #e8e4e4;
+    /* box-shadow: inset 2px 2px  5px #e8e4e4; */
+    margin-top: 7px;
+    box-shadow: inset 0px 2px 5px 0px #e8e4e4;
 }
 
 .create-user-heading{

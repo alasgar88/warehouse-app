@@ -34,7 +34,7 @@ export const adminMenu = [
 export const userMenu = [
   {
     label: "Transactions",
-    icon: <GrTransaction />,
+    icon: <BsFillArrowRightCircleFill />,
     path: "/user/transactions",
     id: 10,
   },

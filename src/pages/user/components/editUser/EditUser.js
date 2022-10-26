@@ -4,10 +4,11 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { InfoModal } from "../../../../componenets";
 import { toast } from "react-toastify";
 import { forgetPassword } from "../../../../features/user/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { changePassword } from "../../../../features/user/userSlice";
+import { AiOutlineCloseSquare } from "react-icons/ai";
 
-const EditUser = () => {
+const EditUser = ({ showEditUser, setShowEditUser }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { editUserEmail } = useSelector((store) => store.user);
   const [userData, setUserData] = useState({
@@ -50,6 +51,14 @@ const EditUser = () => {
         data={userData}
         text='Confirm to change password'
       />
+      <button
+        className='category-button close-button'
+        onClick={() => setShowEditUser(!showEditUser)}
+      >
+        <span className='close-icon'>
+          <AiOutlineCloseSquare />
+        </span>
+      </button>
       <p className='create-user-heading'>Reset Password</p>
       <p
         className='reset-password-instructions'

@@ -20,7 +20,7 @@ const TableWarehouse = ({ data }) => {
   }, [click]);
 
   return (
-    <div className='table-container main-table'>
+    <div className='table-container'>
       <InfoModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
@@ -34,7 +34,7 @@ const TableWarehouse = ({ data }) => {
           <tr>
             <th>Name</th>
             <th>Place</th>
-            <th></th>
+            <th className='action-column'>Action</th>
             <th></th>
           </tr>
         </thead>

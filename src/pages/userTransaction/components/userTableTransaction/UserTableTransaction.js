@@ -16,7 +16,7 @@ const UserTableTransaction = ({ data }) => {
   // endof for detail info
 
   return (
-    <div className='table-container main-table'>
+    <div className='table-container'>
       <InfoModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
@@ -36,7 +36,7 @@ const UserTableTransaction = ({ data }) => {
             <th>Count</th>
             <th>Time</th>
             <th>State</th>
-            <th></th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>

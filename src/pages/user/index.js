@@ -40,14 +40,7 @@ const Users = () => {
     <div className='table-container'>
       <div className='button-container'>
         {/* show edit user edit  */}
-        {showEditUser ? (
-          <button
-            className='category-button close-button'
-            onClick={() => setShowEditUser(!showEditUser)}
-          >
-            <AiOutlineCloseSquare />
-          </button>
-        ) : (
+        {!showEditUser && (
           <button
             className='category-button'
             onClick={() => setShowCreateUser(!showCreateUser)}
@@ -59,7 +52,10 @@ const Users = () => {
       {showCreateUser ? (
         <CreateUser setShowCreateUser={setShowCreateUser} />
       ) : showEditUser ? (
-        <EditUser />
+        <EditUser
+          showEditUser={showEditUser}
+          setShowEditUser={setShowEditUser}
+        />
       ) : (
         <TableUser data={userList} setShowEditUser={setShowEditUser} />
       )}

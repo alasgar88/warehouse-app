@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import "./infinite-scroll.css";
 import { FormGroup, Label, Input, Spinner } from "reactstrap";
 import { useDispatch, unwrap } from "react-redux";
@@ -12,37 +12,38 @@ const InfiniteScroll = ({
 }) => {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
+  const [requestDate, setRequestData] = useState([1]);
   const [page, setPage] = useState(1);
   //
   const [showContainer, setShowContainer] = useState(false);
   const [inputData, setInputData] = useState("");
   const [height, setHeight] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [lastData, setLastData] = useState(false);
+  // const [lastData, setLastData] = useState(false);
   const ref = useRef();
   //
+  console.log(page, "page");
 
-  console.log(lastData, "lastdata");
-  // console.log(productList, "productList");
   // scroll handler
-  const scrollHandler = (e) => {
-    const scrollHeight = e.target.scrollHeight;
-    const scrollTop = e.target.scrollTop;
-    if (scrollHeight - (scrollTop + height) <= 20) {
+  const scrollHandler = useCallback(
+    (e) => {
+      const scrollHeight = e.target.scrollHeight;
+      const scrollTop = e.target.scrollTop;
       console.log(scrollHeight - (scrollTop + height));
-      setPage((oldData) => oldData + 1);
-    }
-    // console.log(e.target.scrollTop, "scrollTop");
-    // console.log(e.target.scrollHeight, "scrollHeight");
-    // console.log(height, "etarget");
-  };
+
+      if (scrollHeight - (scrollTop + height) <= 20) {
+        setPage((oldData) => oldData + 1);
+      }
+    },
+    [height]
+  );
 
   // scroll event
   useEffect(() => {
     height && ref?.current?.addEventListener("scroll", scrollHandler);
     return () =>
       height && ref?.current?.removeEventListener("scroll", scrollHandler);
-  }, [height]);
+  }, [height, scrollHandler]);
 
   // find container height
   useEffect(() => {
@@ -62,21 +63,18 @@ const InfiniteScroll = ({
   };
 
   // get data
+
   useEffect(() => {
-    if (!lastData && !isLoading) {
+    if (requestDate.length > 0) {
       setIsLoading(true);
       dispatch(getDataObject(page))
         .unwrap()
         .then((data) => {
           setIsLoading(false);
-          console.log(data[dataListName].length);
-          if (data[dataListName].length === 0) setLastData(true);
-
+          setRequestData(data[dataListName]);
           setData((oldData) => {
             return [...oldData, ...data[dataListName]];
           });
-
-          // setData(data.products);
         });
     }
   }, [page]);
@@ -87,7 +85,7 @@ const InfiniteScroll = ({
         <Input
           id='sell'
           name='sellPrice'
-          placeholder='Enter sell price'
+          // placeholder='Enter sell price'
           type='text'
           onFocus={handleFocus}
           onBlur={handleBlur}

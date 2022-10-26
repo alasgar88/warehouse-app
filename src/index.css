@@ -29,8 +29,18 @@ code {
 .table-container.main-table {
   min-height: 400px;
 }
+
 .table-title{
     margin-bottom: 30px;
+}
+
+.action-column{
+  /* border-left: 1px solid rgb(202, 199, 199); */
+  padding-left: 15px !important;
+}
+
+th{
+  padding-right: 0px !important;
 }
 
 
@@ -44,13 +54,14 @@ code {
 }
 
 .category-button{
+    position: relative;
     border: none;
     border-radius: 5px;
-    padding: 8px 6px;
+    padding: 6px 6px;
     background: blue;
     color: white;
     font-size: 12px;
-    width: 112px;
+    width: 120px;
 }
 
 .category-button:hover{

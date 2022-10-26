@@ -2,8 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: white;
+    /* background: white; */
     text-align: center;
+    background: inherit;
 
   
 }
@@ -27,29 +28,32 @@
 
 .menu-item-container.active{
     transform: scale(1.05) !important;
-    background: #cdf5fd !important;
-    border-radius: 5px !important;
-    color: blue !important;
+    /* background: #cdf5fd !important; */
+    /* border-radius: 5px !important; */
+    background: blue !important;
+    color: white !important;
 }
 
 .menu-item-container.active .icon{
-    color: blue;
+    color: white;
 }
 
 
 .menu-item-container:hover{
     transform: scale(1.05);
-    background: #eefcfe;
     border-radius: 5px;
+    background: #350D36;
 }
-.menu-item-container:hover .icon{
+
+/* .menu-item-container:hover .icon{
     color: blue;
-}
+} */
 
 
 .icon{
     font-size: 18px;
-    color: grey;
+    /* color: grey; */
+    color: #988498;
 }
 
 .icon.minibar{

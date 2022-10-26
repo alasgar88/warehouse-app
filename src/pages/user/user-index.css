@@ -40,5 +40,15 @@
     justify-content: center;
     font-size: 30px !important;
     padding: 0 !important;
+    position: relative !important;
+    top: -15px;
+    left: 390px;
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    z-index: 100;
+    font-size: 24px!important;
+    padding-bottom: 2.5px !important
 }
+
 
